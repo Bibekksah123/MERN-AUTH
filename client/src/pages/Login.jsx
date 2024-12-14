@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 function Login() {
-  const { backendUrl, setIsloggedin } = useContext(Appcreatecontext);
+  const { backendUrl, setIsloggedin,getuerdata } = useContext(Appcreatecontext);
  // console.log(backendUrl)
   const [createdlogin, setCreatedlogin] = useState("Sign Up");
   const [name, setName] = useState("");
@@ -24,6 +24,7 @@ function Login() {
         console.log(data);
         if (data.Success) {
           setIsloggedin(true);
+          getuerdata()
           navigate("/");
         } else {
           toast.error(data.message);
@@ -32,6 +33,7 @@ function Login() {
         const { data } = await axios.post("http://localhost:3000/api/auth/login",{email,password});
         if (data.Success) {
           setIsloggedin(true);
+          getuerdata()
           navigate("/");
         } else {
           toast.error(data.message);

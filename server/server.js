@@ -26,7 +26,10 @@ app.use("/api/user", userRouter);
 
 // Basic test route
 app.get("/", (req, res) => {
-  res.send("hello");
+ 
+res.send("hello world ")
+
+
 });
 
 // Start the server
